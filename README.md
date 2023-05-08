@@ -75,15 +75,13 @@ const image_id = 'page-id/image-filename.jpg';
 const thumb_url = `${host}/${image_id}${serializeObjectToQueryString( options )}`;
 ```
 ```html
-<img src="{thumb_url}" width="{options.width}" height="options.height" />
+<img src={thumb_url} width={options.width} height={options.height} />
 ```
 
 **Load multiple sizes for srcset:**
 
 ```js
-/*
- * createQueryString, url_base, image_id same as in example above
- */
+// createQueryString, url_base, image_id same as in example above
 
 const sizes = [240,480,960];
 
@@ -96,7 +94,7 @@ let srcset = sizes.map( size => {
 
 ```
 ```html
-<img src="{srcset[0]}" srcset="{srcset.join(', ')}" />
+<img src={srcset[0]} srcset={srcset.join(', ')} />
 ```
 
 > Note that the html code above is just an example and wouln’t work in a vanilla setup, but require some type of templating engine, e.g. Svelte.
@@ -135,7 +133,7 @@ return [
 
 When sticking to the default options, it is only allowed to request thumbs with the specified widths and heights as well as cropping. If you need the other options, you should enable them via your `site/config/config.php` file.
 
-The default values can be set here:
+You can also set some thumbnail option defaults for Kirby:
 https://getkirby.com/docs/reference/system/options/thumbs
 
 ## Development
@@ -150,7 +148,7 @@ Roadmap:
 
 ## ☕️ Support
 
-If you like this plugin, I would be glad if you would invite for on a coffee via [PayPal](http://more.moritzebeling.com/support)
+If you like this plugin, I would be glad if you would invite me for a coffee via [PayPal](http://more.moritzebeling.com/support).
 If you have any ideas for further development or stumble upon any problems, please open an issue or PR. Thank you!
 
 ## Warranty
