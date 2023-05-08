@@ -1,0 +1,44 @@
+{
+    "name": "moritzebeling/kirby-headless-image-transformations",
+    "description": "Kirby plugin for headless image transformations",
+    "version": "1.0.0",
+    "type": "kirby-plugin",
+    "homepage": "https://github.com/moritzebeling/kirby-headless-image-transformations",
+    "time": "2023-05-08",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moritz Ebeling",
+            "homepage": "https://moritzebeling.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/moritzebeling/kirby-headless-image-transformations/issues",
+        "source": "https://github.com/moritzebeling/kirby-headless-image-transformations",
+        "docs": "https://github.com/moritzebeling/kirby-headless-image-transformations"
+    },
+    "funding": [
+        {
+            "type": "paypal",
+            "url": "http://more.moritzebeling.com/support"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "getkirby/composer-installer": "^1.1"
+    },
+    "keywords": [
+        "php",
+        "kirby",
+        "plugin",
+        "kirby-plugin",
+        "kirby-cms",
+        "headless",
+        "image",
+        "transform",
+        "resize",
+        "thumb",
+        "thumbnail",
+        "generation",
+    ]
+}
