@@ -1,7 +1,7 @@
 {
     "name": "moritzebeling/kirby-headless-image-transformations",
     "description": "Kirby plugin for headless image transformations",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "kirby-plugin",
     "homepage": "https://github.com/moritzebeling/kirby-headless-image-transformations",
     "time": "2023-05-08",
