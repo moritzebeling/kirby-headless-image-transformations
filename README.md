@@ -26,7 +26,6 @@ https://your-kirby-website.com/thumbs/{image-id}.{ext}?width=640&height=640&crop
 
 ```bash
 composer require moritzebeling/kirby-headless-image-transformations
-composer update moritzebeling/kirby-headless-image-transformations
 ```
 
 Or download/clone this repo into `site/plugins` of your Kirby project.
