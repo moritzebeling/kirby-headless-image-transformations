@@ -2,17 +2,22 @@
 
 This plugin adds a new route to your Kirby CMS installation that allows you to transform images on the fly. This is useful when you want to let the frontend decide what image size to load:
 
+**Schema**
 ```
-## Schema
 https://your-kirby-website.com/thumbs/{image-id}.{ext}?{transformations}
+```
 
-## Original
+**Original image**
 https://your-kirby-website.com/thumbs/{image-id}.{ext}
+```
 
-## Thumbnail with 640px width and auto height
+**Thumbnail with 640px width and auto height**
+```
 https://your-kirby-website.com/thumbs/{image-id}.{ext}?width=640
+```
 
-## Cropped thumbnail with 640px width and height
+**Cropped thumbnail with 640px width and height**
+```
 https://your-kirby-website.com/thumbs/{image-id}.{ext}?width=640&height=640&crop=true
 ```
 
@@ -31,37 +36,42 @@ You can use all options offered by the [Kirby `thumb()` method](https://getkirby
 
 ```js
 let options = {
-    'autoOrient' => true, // bool
+    'autoOrient' => true,  // bool
     'crop'       => false, // bool
     'blur'       => false, // bool
     'grayscale'  => false, // bool
-    'height'     => null, // int
-    'quality'    => 90, // int
-    'width'      => null, // int
+    'height'     => null,  // int
+    'quality'    => 90,    // int 0-100
+    'width'      => null,  // int
 }
 ```
 
 ## Usage
 
-This plugin can be helpful if you use Kirby as a Headless CMS and want to decide on your frontend which image size to load or to include in your srcset.
+This plugin can be helpful if you use Kirby as a Headless CMS and want to decide on your frontend which image size to load or to include in your srcset. You would only need the image id:
+
+```php
+$image_id = $file->id();
+```
 
 **Load single size:**
 
 ```js
-function createQueryString( options = {} ){
+function serializeObjectToQueryString( options = {} ){
     const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
     return queryString ? '?' + queryString : '';
 }
 
-const url_base = 'https://your-kirby-website.com/thumbs';
-const image_id = 'page-id/image-filename.jpg';
 const options = {
     width: 640,
     height: 640,
     crop: true,
 };
 
-const thumb_url = `${url_base}/{image_id}{createQueryString( options )}`;
+const host = 'https://your-kirby-website.com/thumbs';
+const image_id = 'page-id/image-filename.jpg';
+
+const thumb_url = `${host}/${image_id}${serializeObjectToQueryString( options )}`;
 ```
 ```html
 <img src="{thumb_url}" width="{options.width}" height="options.height" />
@@ -80,7 +90,7 @@ let srcset = sizes.map( size => {
     const options = {
         width: size
     };
-    return `${url_base}/{image_id}{createQueryString( options )} ${size}w`;
+    return `${host}/${image_id}${serializeObjectToQueryString( options )} ${size}w`;
 });
 
 ```
