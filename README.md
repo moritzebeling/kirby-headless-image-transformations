@@ -133,8 +133,8 @@ https://getkirby.com/docs/reference/system/options/thumbs
 2. `cd site/plugins`
 3. `git clone` this repo
 
-Roadmap
-- [ ] Throw an error when the images does not exist
+Roadmap:
+- [ ] Discuss if preset images sizes make sense
 - [ ] Check if browser caching works as expected
 
 ## ☕️ Support
