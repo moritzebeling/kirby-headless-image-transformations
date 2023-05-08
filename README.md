@@ -122,6 +122,8 @@ return [
 ];
 ```
 
+When sticking to the default options, it is only allowed to request thumbs with the specified widths and heights as well as cropping. If you need the other options, you should enable them via your `site/config/config.php` file.
+
 The default values can be set here:
 https://getkirby.com/docs/reference/system/options/thumbs
 
@@ -132,7 +134,6 @@ https://getkirby.com/docs/reference/system/options/thumbs
 3. `git clone` this repo
 
 Roadmap
-- [ ] Discuss if some options should be restricted by default
 - [ ] Throw an error when the images does not exist
 - [ ] Check if browser caching works as expected
 

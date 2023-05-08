@@ -2,6 +2,23 @@
 
 use Kirby\Cms\App as Kirby;
 
+/*
+test:
+http://kirby-plugin-testground.test/thumbs/photography/desert/dune.jpg
+http://kirby-plugin-testground.test/thumbs/photography/desert/dune.jpg?width=160
+*/
+
+function parseValueFromQueryString( $value ){
+    if( $value === true || $value === 'true' ){
+        return true;
+    } else if( $value === false || $value === 'false' ){
+        return false;
+    } else if( is_numeric($value) ){
+        return (int)$value;
+    }
+    return null;
+}
+
 Kirby::plugin('moritzebeling/kirby-headless-image-transformations', [
 
     'options' => [
@@ -24,11 +41,37 @@ Kirby::plugin('moritzebeling/kirby-headless-image-transformations', [
                 $image = kirby()->image( $id );
 
                 if( !$image ){
+                    /* 404 */
                     return;
                 }
 
-                if( $width = get('width', false) ){
-                    $image = $image->resize( $width );
+                $allowed = option('moritzebeling.kirby-headless-image-transformations.allowed');
+                $options = [];
+
+                foreach( $allowed as $key => $value ){
+                    if( $value === false ){
+                        // skip if option is not allowed
+                        continue;
+                    } if( $value === true ){
+                        // option is allowed without restrictions, so let’s add it if exists
+                        $input = get($key, null);
+                        if( $v = parseValueFromQueryString($input) ){
+                            $options[$key] = $v;
+                        }
+                        continue;
+                    } else if( is_array($value) ) {
+                        // add option only when in array of allowed values
+                        $input = get($key, null);
+                        $v = parseValueFromQueryString($input);
+                        if( $v && in_array( $v, $value, true ) ){
+                            $options[$key] = $v;
+                        }
+                        continue;
+                    }
+                }
+
+                if( count( $options ) > 0 ){
+                    $image = $image->thumb( $options );
                 }
 
                 return go( $image->url() );
