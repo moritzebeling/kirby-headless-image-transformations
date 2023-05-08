@@ -25,7 +25,7 @@ composer update moritzebeling/kirby-headless-image-transformations
 
 Or download/clone this repo into `site/plugins` of your Kirby project.
 
-## Options
+## URL Query parameters
 
 You can use all options offered by the [Kirby `thumb()` method](https://getkirby.com/docs/reference/objects/cms/file/thumb#options):
 
