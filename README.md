@@ -8,6 +8,7 @@ https://your-kirby-website.com/thumbs/{image-id}.{ext}?{transformations}
 ```
 
 **Original image**
+```
 https://your-kirby-website.com/thumbs/{image-id}.{ext}
 ```
 
