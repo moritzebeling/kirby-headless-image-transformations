@@ -2,12 +2,6 @@
 
 use Kirby\Cms\App as Kirby;
 
-/*
-test:
-http://kirby-plugin-testground.test/thumbs/photography/desert/dune.jpg
-http://kirby-plugin-testground.test/thumbs/photography/desert/dune.jpg?width=160
-*/
-
 function parseValueFromQueryString( $value ){
     if( $value === true || $value === 'true' ){
         return true;
