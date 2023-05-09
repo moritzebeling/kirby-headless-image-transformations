@@ -77,23 +77,24 @@ const thumb_url = `${host}/${image_id}${serializeObjectToQueryString( options )}
 <img src={thumb_url} width={options.width} height={options.height} />
 ```
 
-**Load multiple sizes for srcset:**
+**Load multiple widths for srcset:**
 
 ```js
 // createQueryString, url_base, image_id same as in example above
 
 const sizes = [240,480,960];
 
+let src = `${host}/${image_id}${serializeObjectToQueryString({ width: sizes[0] })}`;
 let srcset = sizes.map( size => {
     const options = {
         width: size
     };
     return `${host}/${image_id}${serializeObjectToQueryString( options )} ${size}w`;
-});
+}).join(', ');
 
 ```
 ```html
-<img src={srcset[0]} srcset={srcset.join(', ')} />
+<img {src} {srcset} />
 ```
 
 > Note that the html code above is just an example and wouln’t work in a vanilla setup, but require some type of templating engine, e.g. Svelte.
