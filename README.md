@@ -101,9 +101,9 @@ let srcset = sizes.map( size => {
 
 ## Options and security considerations
 
-Whenever a thumbnail is requested for the first time, Kirby will generate it and store it in the `media` folder. So whenever a thumb is requested for the first time, it will take a lille longer.
+Whenever a thumbnail is requested for the first time, Kirby will generate it and store it in the `media` folder. So whenever a thumb is requested for the first time, it will take a little longer.
 
-This also means that people with bad intentions could exploit this to overwhelm your server and fill up your disk space. So in order to prevent this, you should restrict the allowed transformations to only the ones you actually need.
+This also means that people with bad intentions could exploit this to overwhelm your server and fill up your disk space. In order to prevent this, you should restrict the allowed transformations to only the ones you actually need.
 
 **Default settings:**
 
